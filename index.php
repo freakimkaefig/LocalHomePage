@@ -23,7 +23,7 @@
 			        <ul>
 					<?php
 			            foreach ( $devtools as $tool ) {
-			            	printf( '<li><a href="%1$s">%2$s</a></li>', $tool['url'], $tool['name'] );
+			            	printf( '<li><a href="%1$s" target="_blank">%2$s</a></li>', $tool['url'], $tool['name'] );
 			            }
 					?>
 			        </ul>
@@ -69,8 +69,8 @@
 							else
 								$displayname = $siteoptions[$project];
 						}
+						printf( '<a class="site" href="%1$s" target="_blank">%2$s</a>', $siteroot, $displayname );
 
-		            printf( '<a class="site" href="%1$s">%2$s</a>', $siteroot, $displayname );
 
 						// Display an icon with a link to the admin area
 						$adminurl = '';
@@ -84,8 +84,8 @@
 
 						// If there's an admin url then we'll show it - the icon will depend on whether it looks like WP or not
 						if ( ! empty( $adminurl ) )
+							printf( '<a class="%2$s icon" href="%1$s" target="_blank">Admin</a>', $adminurl, is_dir( $file . '/wp-admin' ) ? 'wp' : 'admin' );
 
-			            printf( '<a class="%2$s icon" href="%1$s">Admin</a>', $adminurl, is_dir( $file . '/wp-admin' ) ? 'wp' : 'admin' );
 
 						echo '</li>';
 

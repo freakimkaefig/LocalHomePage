@@ -1,6 +1,36 @@
-### A Local Home Page for OSX Web Development
+# Local Home Page for OSX Web Development
 
-This is a small and simple local home page that automatically lists, and provide links to, your local sites. It's a companion project for a [blog post](http://mallinson.ca/post/osx-web-development) I wrote about setting up your Mac for web development.
+Forked from [https://github.com/cmall/LocalHomePage](https://github.com/cmall/LocalHomePage).
 
+## Local Setup Documentation
 
-* img/icon-gear.png from [Icons DB](http://www.iconsdb.com/black-icons/gear-2-icon.html)
+Local DocumentRoot: `/Users/username/Sites`  
+Local project root: `/Users/username/Repositories`
+
+### Add VirtualHost
+
+Add VirtualHost configuration in `/usr/local/etc/httpd/extra/httpd-vhosts.conf`:
+
+```
+<VirtualHost *:80>
+    DocumentRoot "/Users/username/Sites/sitename.test"
+    ServerName flamingoboyz.test
+    <Directory "/Users/username/Sites/sitename.test">
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+```
+
+Symlink project from local repository to `Sites` directory:
+
+```
+ln -s /Users/username/Repositories/sitename/public /Users/username/Sites/sitename.test
+```
+
+Restart apache:
+
+```
+sudo apachectl -k restart
+```

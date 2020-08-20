@@ -14,7 +14,7 @@ Add VirtualHost configuration in `/usr/local/etc/httpd/extra/httpd-vhosts.conf`:
 ```
 <VirtualHost *:80>
     DocumentRoot "/Users/username/Sites/sitename.test"
-    ServerName flamingoboyz.test
+    ServerName sitename.test
     <Directory "/Users/username/Sites/sitename.test">
         Options Indexes FollowSymLinks
         AllowOverride All

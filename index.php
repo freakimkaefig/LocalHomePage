@@ -97,6 +97,32 @@
 			?>
 			</div>
 
+			<div class="cf">
+				<h3>Local Setup Documentation</h3>
+				<p>Local DocumentRoot: <code>/Users/username/Sites</code><br>
+				   Local project root: <code>/Users/username/Repositories</code></p>
+				
+				<h3>Add VirtualHost</h3>
+				<p>Add VirtualHost configuration in <code>/usr/local/etc/httpd/extra/httpd-vhosts.conf</code>:</p>
+				<xmp>
+					<VirtualHost *:80>
+						DocumentRoot "/Users/username/Sites/sitename.test"
+						ServerName flamingoboyz.test
+						<Directory "/Users/username/Sites/sitename.test">
+							Options Indexes FollowSymLinks
+							AllowOverride All
+							Require all granted
+						</Directory>
+					</VirtualHost>
+				</xmp>
+
+				<p>Symlink project from local repository to <code>Sites</code> directory:</p>
+				<code>ln -s /Users/username/Repositories/sitename/public /Users/username/Sites/sitename.test</code>
+
+				<p>Restart apache:</p>
+				<code>sudo apachectl -k restart</code>
+			</div>
+
 		    <footer class="cf">
 		    <p></p>
 		    </footer>
